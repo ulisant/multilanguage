@@ -1,0 +1,10 @@
+from django.shortcuts import render
+from django.views.generic import ListView
+from models import News
+
+class Inicio(ListView):
+
+	template_name = 'inicio.html'
+	model = News
+
+	

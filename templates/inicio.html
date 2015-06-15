@@ -1,0 +1,23 @@
+{% load i18n %}
+<!doctype html>
+<html lang="{{LANGUAGE_CODE}}" >
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de Inicio</title>
+</head>
+<body>
+    <form action="/i18n/setlang/" method="post">{% csrf_token %}
+      <input name="next" type="hidden" value="/" />
+      <select name="language">
+        {% for lang in LANGUAGES %}
+          <option value="{{ lang.0 }}">{{ lang.1 }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Go" />
+    </form>
+    {% for new in object_list %}
+      <h1>{{new.title}} </h1>
+      <p>{{new.text}}</p>
+    {% endfor %}
+</body>
+</html>
